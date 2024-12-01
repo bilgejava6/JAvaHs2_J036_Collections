@@ -1,6 +1,6 @@
 package com.muhammet.Queue.PriorityQueue.entity;
 
-public class Hasta {
+public class Hasta implements Comparable<Hasta>{
     private String ad;
     private int yas;
     private boolean acilMi;
@@ -43,5 +43,51 @@ public class Hasta {
 
     public void setAcilMi(boolean acilMi) {
         this.acilMi = acilMi;
+    }
+
+    /**
+     * İki değerimiz olsun, bunların ilişkisi ile ilgili ne söylenebilir.
+     * 2 Kişi olsun,
+     * bu iki kişinin hangisinin büyük olduğunu tespit etmeni istiyorum.
+     * KAÇ SONUÇ BULABİLİRSİN?????
+     *
+     *               1. Kişi     |   2. Kişi
+     * 1.Durum(-1)     Büyük         Küçük
+     * 2.Durum(1)     Küçük         Büyük
+     * 3.Durum(0)     AYNI          AYNI
+     * Muhammet, Demet, Cemal, Emel, Canan, Hüseyin
+     * this.compareTo(other)
+     *
+     * @param other the object to be compared.
+     * @return
+     */
+    public int compareTo(Hasta other) {
+        if(this.getAd().equalsIgnoreCase("Muhammet") && !other.getAd().equalsIgnoreCase("Muhammet")) return -1;
+        if(!this.getAd().equalsIgnoreCase("Muhammet") && other.getAd().equalsIgnoreCase("Muhammet")) return 1;
+
+        // Acil durumuna göre sırala
+        // this ACİL true  other ACİL DEĞİL false
+        if(this.isAcilMi() && !other.isAcilMi()) return -1;
+        // this ACİL DEĞİL false other ACİL true
+        if(!this.isAcilMi() && other.isAcilMi()) return 1;
+
+//        boolean sercanAcil = true;
+//        boolean muhammetAcil = false;
+//        // parantezin içi doğru ise işlemi yap.
+//        //    true    ve     false    = false
+//        //    true    ve     !false(true)  =  true
+//        if(sercanAcil && !muhammetAcil){
+//            System.out.println("Sercan Acil");
+//        }
+//        if(){
+//            System.out.println("Muhammet Acil");
+//        }
+        // yaş önceliği
+        // bu sınıf nesnesi öncelikli ise
+        if(this.getYas()<7 || this.getYas()>65) return -1;
+        // diğer sınıf öncelikli ise
+        if(other.getYas()<7 || other.getYas()>65) return 1;
+
+        return 0; // iki değerin karşılaştırılmasında 0 nötr dür.
     }
 }
