@@ -1,5 +1,7 @@
 package com.muhammet.Queue.PriorityQueue.entity;
 
+import java.util.Objects;
+
 public class Hasta implements Comparable<Hasta>{
     private String ad;
     private int yas;
@@ -90,4 +92,6 @@ public class Hasta implements Comparable<Hasta>{
 
         return 0; // iki değerin karşılaştırılmasında 0 nötr dür.
     }
+
+
 }
